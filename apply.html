@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply to Trade — Streetfoodish</title>
+  <meta name="description" content="Apply to trade at Streetfoodish markets in London. Piccadilly & St Pancras.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+  <script>UPLOADCARE_PUBLIC_KEY = '5429fdec5e3fb463c84f';</script>
+  <script>UPLOADCARE_LOCALE = 'en';</script>
+  <style>
+    .uploadcare--widget__button {
+      background: var(--grey) !important;
+      border: 1px dashed rgba(255,255,255,0.2) !important;
+      color: var(--white) !important;
+      font-family: 'Barlow', sans-serif !important;
+      font-size: 0.8rem !important;
+      padding: 0.9rem 1.2rem !important;
+      width: 100% !important;
+      text-align: left !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: border-color 0.2s !important;
+    }
+    .uploadcare--widget__button:hover {
+      border-color: var(--orange) !important;
+    }
+    .uploadcare--widget__button_type_open::before {
+      content: '📄 ';
+    }
+    .uploadcare--widget { width: 100% !important; }
+    .uploadcare--widget__file-name {
+      color: var(--orange) !important;
+      font-size: 0.78rem !important;
+    }
+    .uc-done .uploadcare--widget__button {
+      border-color: var(--orange) !important;
+      background: rgba(255,77,0,0.05) !important;
+    }
+  </style>
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --white: #F5F0E8;
+      --orange: #FF4D00;
+      --yellow: #FFD000;
+      --grey: #1A1A1A;
+      --mid: #2A2A2A;
+      --muted: #666;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 1.4rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-back {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: var(--muted); text-decoration: none;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--orange); }
+    .nav-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+    /* HEADER */
+    .page-header {
+      background: var(--grey);
+      padding: 4rem 2.5rem 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .page-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--orange); }
+    .page-header h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.9; text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .page-header h1 em { color: var(--orange); font-style: italic; }
+
+    .header-meta {
+      display: flex; gap: 3rem; margin-top: 2rem; flex-wrap: wrap;
+    }
+    .meta-item { font-size: 0.82rem; color: var(--muted); }
+    .meta-item strong { display: block; color: var(--white); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+
+    /* REQUIREMENTS BAR */
+    .req-bar {
+      background: rgba(255,77,0,0.08);
+      border-bottom: 1px solid rgba(255,77,0,0.2);
+      padding: 1rem 2.5rem;
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .req-bar-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--orange); flex-shrink: 0;
+    }
+    .req-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .req-tag {
+      font-size: 0.7rem; color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.25rem 0.6rem;
+    }
+
+    /* FORM LAYOUT */
+    .form-layout {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem 5rem;
+    }
+
+    .form-section {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .form-section:last-of-type { border-bottom: none; }
+
+    .form-section-header {
+      display: flex; align-items: baseline; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 3rem;
+      color: rgba(255,255,255,0.06); line-height: 1; flex-shrink: 0;
+    }
+    .section-info {}
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--orange);
+    }
+    .section-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1rem; }
+    .form-group:first-child { margin-top: 0; }
+
+    label {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+    }
+    label .req { color: var(--orange); }
+
+    input, textarea, select {
+      background: var(--grey);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--white);
+      padding: 0.9rem 1.1rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      width: 100%;
+      transition: border-color 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    input:focus, textarea:focus, select:focus { border-color: var(--orange); background: #1f1f1f; }
+    textarea { resize: vertical; min-height: 100px; }
+    select option { background: var(--grey); }
+
+    .radio-group { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.4rem; }
+    .radio-label {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.85rem; cursor: pointer; color: var(--white);
+      text-transform: none; letter-spacing: 0; font-weight: 400;
+    }
+    .radio-label input[type="radio"] {
+      width: 15px; height: 15px; accent-color: var(--orange); cursor: pointer; flex-shrink: 0;
+    }
+
+    .warning-box {
+      background: rgba(255,77,0,0.07);
+      border-left: 2px solid var(--orange);
+      padding: 0.7rem 1rem;
+      font-size: 0.78rem; color: var(--muted); line-height: 1.6;
+      margin-top: 0.75rem;
+    }
+    .warning-box strong { color: var(--orange); }
+
+    /* CONDITIONAL SECTIONS */
+    .conditional { display: none; }
+    .conditional.visible { display: block; }
+    .conditional-box {
+      background: var(--grey);
+      border-left: 2px solid rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    .conditional-box .label-tag {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+
+    /* DOCS GRID */
+    .docs-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-top: 1rem;
+    }
+    .doc-item { display: flex; flex-direction: column; gap: 0.4rem; }
+    .doc-label {
+      font-size: 0.7rem; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+    }
+    .doc-label .req { color: var(--orange); }
+    .doc-label .opt { color: var(--muted); font-weight: 400; }
+
+    .file-upload {
+      background: var(--grey);
+      border: 1px dashed rgba(255,255,255,0.15);
+      padding: 1.2rem 1rem;
+      text-align: center;
+      font-size: 0.78rem; color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative; min-height: 80px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem;
+    }
+    .file-upload:hover { border-color: var(--orange); background: #1a1a1a; }
+    .file-upload input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .file-upload .upload-icon { font-size: 1.2rem; }
+    .file-upload strong { color: var(--white); font-size: 0.8rem; }
+    .file-upload.has-file { border-color: var(--orange); background: rgba(255,77,0,0.05); }
+    .file-upload.has-file strong { color: var(--orange); }
+
+    /* DECLARATION */
+    .checkbox-label {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.85rem; cursor: pointer; color: var(--muted);
+      line-height: 1.6; margin-bottom: 0.75rem;
+      text-transform: none; letter-spacing: 0; font-weight: 400;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: 16px; height: 16px; flex-shrink: 0;
+      margin-top: 3px; accent-color: var(--orange); cursor: pointer;
+    }
+
+    /* SUBMIT */
+    .submit-area {
+      background: var(--grey);
+      padding: 2rem;
+      margin-top: 2rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .submit-note { font-size: 0.78rem; color: var(--muted); max-width: 400px; line-height: 1.6; }
+    .submit-note a { color: var(--orange); }
+
+    .btn-submit {
+      background: var(--orange);
+      color: var(--black);
+      border: none;
+      padding: 1.1rem 3rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .btn-submit:hover { background: var(--yellow); transform: translateY(-2px); }
+
+    .error-msg {
+      display: none;
+      background: rgba(255,77,0,0.1);
+      border: 1px solid var(--orange);
+      padding: 1rem 1.5rem;
+      font-size: 0.88rem; color: var(--white);
+      margin-top: 1rem; line-height: 1.6;
+    }
+    .error-msg a { color: var(--orange); }
+
+    /* SUCCESS */
+    .success-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--black);
+      align-items: center; justify-content: center;
+      flex-direction: column; text-align: center; padding: 2rem;
+    }
+    .success-overlay.show { display: flex; }
+    .success-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+    .success-overlay h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 3rem;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .success-overlay p { color: var(--muted); max-width: 400px; line-height: 1.8; margin-bottom: 2rem; }
+    .btn-home {
+      display: inline-block;
+      background: var(--orange); color: var(--black);
+      padding: 1rem 2.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-home:hover { background: var(--yellow); }
+
+    /* FOOTER */
+    footer {
+      background: #050505;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.75rem; color: var(--muted); flex-wrap: wrap; gap: 0.5rem;
+    }
+    footer a { color: var(--orange); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .page-header { padding: 3rem 1.25rem 2rem; }
+      .req-bar { padding: 1rem 1.25rem; }
+      .form-layout { padding: 2rem 1.25rem 4rem; }
+      .form-row, .form-row-3, .docs-grid { grid-template-columns: 1fr; }
+      .header-meta { gap: 1.5rem; }
+      .submit-area { flex-direction: column; }
+      .btn-submit { width: 100%; text-align: center; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SUCCESS OVERLAY -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-icon">✅</div>
+    <h2>Application Received!</h2>
+    <p>Thank you for applying to trade at Streetfoodish. We'll review your application and get back to you within 5 working days.</p>
+    <a href="index.html" class="btn-home">← Back to Homepage</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Street<span>FOOD</span>ish</a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to Site
+    </a>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="page-label">Trade With Us</div>
+    <h1>Hot Food<br>Application <em>Form</em><br>2026</h1>
+    <div class="header-meta">
+      <div class="meta-item"><strong>Locations</strong>Piccadilly &amp; St Pancras, London</div>
+      <div class="meta-item"><strong>Hours</strong>Mon–Fri · 11:00–15:00</div>
+      <div class="meta-item"><strong>Note</strong>A completed application is not a guarantee of a place</div>
+    </div>
+  </div>
+
+  <!-- REQUIREMENTS BAR -->
+  <div class="req-bar">
+    <div class="req-bar-title">Documents required:</div>
+    <div class="req-tags">
+      <span class="req-tag">PLI Certificate</span>
+      <span class="req-tag">Food Hygiene Cert (L2+)</span>
+      <span class="req-tag">Council Registration</span>
+      <span class="req-tag">Risk Assessment</span>
+      <span class="req-tag">HACCP</span>
+      <span class="req-tag">Gas Safety Cert</span>
+      <span class="req-tag">2× Stall Photos</span>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-layout">
+    <form id="applyForm" action="https://formspree.io/f/xgod1blk" method="POST" enctype="multipart/form-data" novalidate>
+
+      <!-- 1. Personal & Business -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">01</div>
+          <div class="section-info">
+            <div class="section-title">Personal &amp; Business Details</div>
+            <div class="section-desc">All documents must be under the same registered name</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name — Sole Trader or Director <span class="req">*</span></label>
+            <input type="text" name="full_name" placeholder="First and last name" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" name="applicant_email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-row" style="margin-top:1rem">
+          <div class="form-group">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" name="phone" placeholder="+44 7700 000000" required>
+          </div>
+          <div class="form-group">
+            <label>Personal Address <span class="req">*</span></label>
+            <input type="text" name="personal_address" placeholder="Full address incl. postcode" required>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:1rem">
+          <label>Type of Business <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="business_type" value="sole_trader" id="radioSole" required> Sole Trader</label>
+            <label class="radio-label"><input type="radio" name="business_type" value="limited_company" id="radioLtd"> Limited Company</label>
+            <label class="radio-label"><input type="radio" name="business_type" value="other" id="radioOther"> Other</label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:0.5rem" id="otherSpecifyField" class="conditional">
+          <label>If Other — please specify</label>
+          <input type="text" name="business_type_other" placeholder="e.g. Partnership, CIC...">
+        </div>
+
+        <!-- SOLE TRADER / OTHER — shows Trading Name only -->
+        <div class="conditional" id="soleTraderSection">
+          <div class="conditional-box">
+            <div class="label-tag">▸ Company Details</div>
+            <div class="form-group">
+              <label>Trading Name <span class="req">*</span></label>
+              <input type="text" name="trading_name_sole" id="tradingNameSole" placeholder="The name under which you trade at the market">
+            </div>
+          </div>
+        </div>
+
+        <!-- LIMITED COMPANY — shows full company fields -->
+        <div class="conditional" id="ltdSection">
+          <div class="conditional-box">
+            <div class="label-tag">▸ Company Details</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Company Name (incl. Ltd suffix) <span class="req">*</span></label>
+                <input type="text" name="company_name" id="companyName" placeholder="e.g. Great Curry Ltd">
+              </div>
+              <div class="form-group">
+                <label>Company Registration Number <span class="req">*</span></label>
+                <input type="text" name="company_reg" id="companyReg" placeholder="e.g. 12345678">
+              </div>
+            </div>
+            <div class="form-row" style="margin-top:1rem">
+              <div class="form-group">
+                <label>Trading Name <span class="req">*</span></label>
+                <input type="text" name="trading_name_ltd" id="tradingNameLtd" placeholder="Name at the market">
+              </div>
+              <div class="form-group">
+                <label>VAT Number (if applicable)</label>
+                <input type="text" name="vat_number" placeholder="GB 000 0000 00">
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:1rem">
+              <label>Registered Company Address <span class="req">*</span></label>
+              <input type="text" name="company_address" id="companyAddress" placeholder="Full address as at Companies House">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Stall Setup -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">02</div>
+          <div class="section-info">
+            <div class="section-title">Stall Setup &amp; Equipment</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Stall Setup <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="stall_setup" value="gazebo_3x3" required> Gazebo 3×3m (max size)</label>
+            <label class="radio-label"><input type="radio" name="stall_setup" value="gazebo_other"> Gazebo other size</label>
+            <label class="radio-label"><input type="radio" name="stall_setup" value="food_truck"> Food Truck (future)</label>
+            <label class="radio-label"><input type="radio" name="stall_setup" value="trailer"> Trailer (future)</label>
+          </div>
+          <div class="warning-box">
+            <strong>Maximum accepted size: 3×3m</strong> — larger setups cannot be accommodated at any of our locations. Food trucks and trailers are future opportunities only.
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:1rem" id="gazeboSizeField">
+          <label>If non-standard gazebo — specify dimensions</label>
+          <input type="text" name="gazebo_size" placeholder="Must not exceed 3×3m total footprint">
+        </div>
+
+        <div class="form-group" style="margin-top:1.5rem">
+          <label>Cooking Equipment <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="cooking" value="gas" required> LPG / Gas</label>
+            <label class="radio-label"><input type="radio" name="cooking" value="electricity" id="electricityOption"> Electricity</label>
+            <label class="radio-label"><input type="radio" name="cooking" value="other"> Other (specify below)</label>
+          </div>
+          <div class="warning-box">
+            <strong>⚠ Electricity not guaranteed</strong> — Electricity is NOT always available. Most locations are gas-only. If you select electricity you must confirm availability with us in advance — failure to do so may mean you cannot trade on the day, with no refund.
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:1rem">
+          <label>If Other — specify cooking equipment</label>
+          <input type="text" name="cooking_other" placeholder="e.g. wood-fired, induction...">
+        </div>
+      </div>
+
+      <!-- 3. Menu -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">03</div>
+          <div class="section-info">
+            <div class="section-title">Menu &amp; Food Offering</div>
+            <div class="section-desc">Max 3 dishes · at least 1 vegetarian · be specific · focused cuisine only</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Dish 1 — Name, description &amp; price <span class="req">*</span></label>
+            <input type="text" name="dish_1" placeholder="e.g. Jerk Chicken Box · rice & peas · £10" required>
+          </div>
+          <div class="form-group">
+            <label>Dish 2 — Name, description &amp; price <span class="req">*</span></label>
+            <input type="text" name="dish_2" placeholder="e.g. Ackee & Saltfish Wrap · £9" required>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:1rem">
+          <label>Dish 3 — optional</label>
+          <input type="text" name="dish_3" placeholder="Optional third dish">
+        </div>
+        <div class="form-group" style="margin-top:1rem">
+          <label>Allergens <span class="req">*</span></label>
+          <input type="text" name="allergens" placeholder="List all allergens per UK Food Law (Dec 2014) — e.g. Gluten, Celery, Mustard, Sesame..." required>
+        </div>
+      </div>
+
+      <!-- 4. Social Media -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">04</div>
+          <div class="section-info">
+            <div class="section-title">Market Presence &amp; Social Media</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Markets where you currently trade</label>
+          <input type="text" name="current_markets" placeholder="e.g. Broadway Market (Sat), Maltby Street (Sun)...">
+        </div>
+        <div class="form-row" style="margin-top:1rem">
+          <div class="form-group">
+            <label>Instagram</label>
+            <input type="text" name="instagram" placeholder="@handle">
+          </div>
+          <div class="form-group">
+            <label>TikTok</label>
+            <input type="text" name="tiktok" placeholder="@handle">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:1rem">
+          <label>Facebook / Website</label>
+          <input type="text" name="website" placeholder="URL or page name">
+        </div>
+      </div>
+
+      <!-- 5. Documents -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">05</div>
+          <div class="section-info">
+            <div class="section-title">Required Documents</div>
+            <div class="section-desc">Name each file clearly when submitting (e.g. PLI.pdf, GAS_CERT.pdf)</div>
+          </div>
+        </div>
+
+        <div class="warning-box" style="margin-bottom:1.5rem">
+          <strong>PLI requirements:</strong> Must be valid for market trading via gazebo — unit/restaurant policies NOT accepted. Ltd applicants: policy must be in registered company name with Ltd/Limited suffix. Sole Traders: in your personal name. Trading names, director names, or other entities will be rejected.
+        </div>
+
+        <div class="docs-grid">
+          <div class="doc-item">
+            <div class="doc-label">Public Liability Insurance <span class="req">*</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="pli" data-id="uc-pli" data-required="true" data-images-only="false"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">Food Hygiene Certificate (Level 2+) <span class="req">*</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="food_hygiene" data-id="uc-hygiene" data-required="true" data-images-only="false"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">Proof of Registration with the Council <span class="req">*</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="council_reg" data-id="uc-council" data-required="true" data-images-only="false"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">General Risk Assessment <span class="req">*</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="risk_assessment" data-id="uc-risk" data-required="true" data-images-only="false"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">HACCP / Food Safety Procedures <span class="opt">— recommended</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="haccp" data-id="uc-haccp" data-images-only="false"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">Allergens List (UK Food Law Dec 2014) <span class="req">*</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="allergens_doc" data-id="uc-allergens" data-required="true" data-images-only="false"/>
+          </div>
+          <div class="doc-item" id="gasCertItem">
+            <div class="doc-label" id="gasCertLabel">Gas Safety Certificate <span class="opt">— required if LPG/Gas</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="gas_cert" data-id="uc-gas" data-images-only="false"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">Stall / Food Photo #1 <span class="req">*</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="photo_1" data-id="uc-photo1" data-required="true" data-images-only="true"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">Stall / Food Photo #2 <span class="req">*</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="photo_2" data-id="uc-photo2" data-required="true" data-images-only="true"/>
+          </div>
+          <div class="doc-item">
+            <div class="doc-label">Council Food Hygiene Star Rating (3★ min) <span class="opt">— if available</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="hygiene_rating" data-id="uc-star" data-images-only="false"/>
+          </div>
+          <div class="doc-item" id="patField">
+            <div class="doc-label">PAT Test Certificate <span class="opt">— only if using electricity</span></div>
+            <input type="hidden" role="uploadcare-uploader" name="pat_cert" data-id="uc-pat" data-images-only="false"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Declaration -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">06</div>
+          <div class="section-info">
+            <div class="section-title">Declaration &amp; Consent</div>
+          </div>
+        </div>
+
+        <label class="checkbox-label">
+          <input type="checkbox" name="decl_1" required>
+          I confirm all information in this application is accurate and all documents are valid, current, and consistent under the same registered name.
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="decl_2" required>
+          I confirm my PLI is valid for market trading via gazebo and covers the sale of food at street markets.
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="decl_3" required>
+          I authorise Foodish Limited to process my personal data for application assessment and trader management (streetfoodish.com/privacy-policy).
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="decl_4" required>
+          I grant Foodish Limited permission to use photos/videos of my stall and food for promotional purposes (social media, website, press). I may withdraw this consent in writing at any time.
+        </label>
+      </div>
+
+      <!-- ERROR -->
+      <div class="error-msg" id="errorMsg">
+        ⚠ Please complete all required fields and upload all required documents before submitting.<br>
+        If you have questions or need help, <a href="index.html#contact">contact us here</a> and we'll guide you through the process.
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-area">
+        <div class="submit-note">
+          By submitting this form you agree to our terms. A completed application is not a guarantee of a place. We'll be in touch within 5 working days.<br><br>
+          Questions? <a href="index.html#contact">Contact us first →</a>
+        </div>
+        <button type="submit" class="btn-submit">Submit Application →</button>
+      </div>
+
+    </form>
+  </div>
+
+  <footer>
+    <span>© 2026 Foodish Limited · streetfoodish.com</span>
+    <a href="mailto:francesco@streetfoodish.com">francesco@streetfoodish.com</a>
+  </footer>
+
+  <script>
+    // Business type conditional sections
+    document.querySelectorAll('[name="business_type"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const isSoleOrOther = this.value === 'sole_trader' || this.value === 'other';
+        const isLtd = this.value === 'limited_company';
+        document.getElementById('soleTraderSection').classList.toggle('visible', isSoleOrOther);
+        document.getElementById('ltdSection').classList.toggle('visible', isLtd);
+        const tradingNameSole = document.getElementById('tradingNameSole');
+        const companyName = document.getElementById('companyName');
+        const companyReg = document.getElementById('companyReg');
+        const tradingNameLtd = document.getElementById('tradingNameLtd');
+        const companyAddress = document.getElementById('companyAddress');
+        if (isSoleOrOther) {
+          tradingNameSole.setAttribute('required', '');
+          companyName.removeAttribute('required');
+          companyReg.removeAttribute('required');
+          tradingNameLtd.removeAttribute('required');
+          companyAddress.removeAttribute('required');
+        } else if (isLtd) {
+          tradingNameSole.removeAttribute('required');
+          companyName.setAttribute('required', '');
+          companyReg.setAttribute('required', '');
+          tradingNameLtd.setAttribute('required', '');
+          companyAddress.setAttribute('required', '');
+        }
+      });
+    });
+
+    // Gas cert required only if LPG/Gas selected
+    let gasRequired = false;
+    document.querySelectorAll('[name="cooking"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const gasLabel = document.getElementById('gasCertLabel');
+        gasRequired = this.value === 'gas';
+        if (gasRequired) {
+          gasLabel.innerHTML = 'Gas Safety Certificate <span class="req">*</span>';
+        } else {
+          gasLabel.innerHTML = 'Gas Safety Certificate <span class="opt">— not required for your setup</span>';
+        }
+      });
+    });
+
+    // Required Uploadcare widget names
+    const requiredWidgets = ['pli', 'food_hygiene', 'council_reg', 'risk_assessment', 'allergens_doc', 'photo_1', 'photo_2'];
+
+    // Form validation
+    document.getElementById('applyForm').addEventListener('submit', function(e) {
+      let valid = true;
+      const radioNames = new Set();
+
+      // Check text/checkbox fields
+      this.querySelectorAll('[required]').forEach(field => {
+        if (field.type === 'radio') {
+          if (!radioNames.has(field.name)) {
+            radioNames.add(field.name);
+            if (!this.querySelectorAll(`[name="${field.name}"]:checked`).length) valid = false;
+          }
+        } else if (field.type === 'checkbox') {
+          if (!field.checked) valid = false;
+        } else if (field.type !== 'hidden') {
+          if (!field.value.trim()) valid = false;
+        }
+      });
+
+      // Check required Uploadcare widgets
+      requiredWidgets.forEach(name => {
+        const input = document.querySelector(`[name="${name}"]`);
+        if (!input || !input.value) valid = false;
+      });
+
+      // Check gas cert if gas selected
+      if (gasRequired) {
+        const gasInput = document.querySelector('[name="gas_cert"]');
+        if (!gasInput || !gasInput.value) valid = false;
+      }
+
+      if (!valid) {
+        e.preventDefault();
+        const err = document.getElementById('errorMsg');
+        err.style.display = 'block';
+        err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    // Show success overlay if redirected back with ?success
+    if (window.location.search.includes('success')) {
+      document.getElementById('successOverlay').classList.add('show');
+    }
+  </script>
+</body>
+</html>
