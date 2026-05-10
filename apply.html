@@ -150,14 +150,9 @@
     .form-section:last-of-type { border-bottom: none; }
 
     .form-section-header {
-      display: flex; align-items: baseline; gap: 1rem;
       margin-bottom: 1.5rem;
     }
-    .section-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900; font-size: 3rem;
-      color: rgba(255,255,255,0.06); line-height: 1; flex-shrink: 0;
-    }
+    .section-num { display: none; }
     .section-info {}
     .section-title {
       font-family: 'Barlow Condensed', sans-serif;
@@ -794,8 +789,9 @@
       });
 
       // Check all 4 declaration checkboxes explicitly
-      ['decl_1','decl_2','decl_3','decl_4'].forEach(name => {
-        const cb = this.querySelector(`[name="${name}"]`);
+      const declarations = ['decl_1', 'decl_2', 'decl_3', 'decl_4'];
+      declarations.forEach(name => {
+        const cb = document.querySelector(`[name="${name}"]`);
         if (!cb || !cb.checked) valid = false;
       });
 
