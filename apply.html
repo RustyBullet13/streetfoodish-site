@@ -96,8 +96,8 @@
     }
     .radio-group { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
     .radio-label { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; cursor: pointer; color: var(--white); font-weight: 400; user-select: none; }
-    .checkbox-label { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; cursor: pointer; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; font-weight: 400; user-select: none; }
-    .checkbox-label input[type="checkbox"] { margin-top: 3px; }
+    .checkbox-label { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; cursor: pointer; color: var(--white); line-height: 1.7; margin-bottom: 1rem; font-weight: 400; user-select: none; font-style: italic; }
+    .checkbox-label input[type="checkbox"] { margin-top: 4px; }
 
     /* WARNING BOX */
     .warning-box { background: rgba(255,77,0,0.07); border-left: 2px solid var(--orange); padding: 0.7rem 1rem; font-size: 0.78rem; color: var(--muted); line-height: 1.6; margin-top: 0.75rem; }
@@ -441,26 +441,11 @@
         <div class="form-section">
           <div class="form-section-header">
             <div class="section-title">Declaration &amp; Consent <span style="color:var(--orange)">*</span></div>
-            <div class="section-desc">All four declarations below are mandatory — you must accept all to submit your application</div>
-          </div>
-          <div class="decl-note">
-            <strong>⚠ Required:</strong> Please read and tick all four declarations before submitting. Your application cannot be processed without full acceptance.
+            <div class="section-desc">Required — you must accept the declaration below to submit your application</div>
           </div>
           <label class="checkbox-label">
-            <input type="checkbox" name="decl_1" id="decl_1">
-            I confirm all information in this application is accurate and all documents are valid, current, and consistent under the same registered name.
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="decl_2" id="decl_2">
-            I confirm my PLI is valid for market trading via gazebo and covers the sale of food at street markets.
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="decl_3" id="decl_3">
-            I authorise Foodish Limited to process my personal data for application assessment and trader management.
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="decl_4" id="decl_4">
-            I grant Foodish Limited permission to use photos/videos of my stall and food for promotional purposes. I may withdraw this consent in writing at any time.
+            <input type="checkbox" name="declaration" id="decl_1">
+            <em>By ticking this box I confirm that all information provided in this application is accurate; all documents submitted are valid, current and registered under the same business name; my Public Liability Insurance is valid for market trading via gazebo and covers the sale of food at street markets; I authorise Foodish Limited to process my personal data for application assessment and trader management; and I grant Foodish Limited permission to use photos and videos of my stall and food for promotional purposes, understanding that I may withdraw this consent in writing at any time.</em>
           </label>
         </div>
 
@@ -544,10 +529,8 @@
         if (!document.querySelector(`[name="${name}"]:checked`)) valid = false;
       });
 
-      // All 4 declarations required
-      ['decl_1', 'decl_2', 'decl_3', 'decl_4'].forEach(id => {
-        if (!document.getElementById(id).checked) valid = false;
-      });
+      // Single declaration required
+      if (!document.getElementById('decl_1').checked) valid = false;
 
       // Required Uploadcare uploads
       requiredUploads.forEach(name => {
