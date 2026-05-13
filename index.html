@@ -411,6 +411,8 @@
       <div class="cdet"><strong>Hours</strong><span>Mon–Fri, 11:00–15:00</span></div>
     </div>
     <form action="https://formspree.io/f/maqvdzbg" method="POST" class="cform rv">
+  <input type="hidden" name="_subject" value="New Contact — Streetfoodish" />
+  <input type="hidden" name="_replyto" id="contact-replyto" value="" />
       <div class="crow">
         <div><label>Your Name *</label><input type="text" name="name" placeholder="Jane Smith" required></div>
         <div><label>Email Address *</label><input type="email" name="email" placeholder="jane@email.com" required></div>
@@ -486,6 +488,14 @@
   // REVEAL
   const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('go'); }), {threshold:.1});
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // Sync contact form _replyto
+const contactEmail = document.querySelector('.cform input[name="email"]');
+const contactReplyto = document.getElementById('contact-replyto');
+if (contactEmail && contactReplyto) {
+  contactEmail.addEventListener('input', () => {
+    contactReplyto.value = contactEmail.value;
+  });
+}
 </script>
 </body>
 </html>
