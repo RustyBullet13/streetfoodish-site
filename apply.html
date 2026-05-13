@@ -418,7 +418,7 @@
     <p>We'll review your application and get back to you within 5–7 working days.<br>Check your inbox for a confirmation email.</p>
   </div>
 
-  <form id="apply-form" action="https://formspree.io/f/xgod1blk" method="POST" novalidate>
+  <form id="apply-form" action="https://formspree.io/f/xgodlblk" method="POST" novalidate>
     <input type="hidden" name="_subject" value="New Trader Application — Streetfoodish" />
     <input type="hidden" name="_replyto" id="replyto-field" value="" />
 
@@ -763,16 +763,17 @@
 
   bizRadios.forEach(r => r.addEventListener('change', () => {
     const val = r.value;
-    blockSole.classList.toggle('hidden',  val !== 'Sole Trader');
-    blockLtd.classList.toggle('hidden',   val !== 'Limited Company');
-    blockOther.classList.toggle('hidden', val !== 'Other');
+    if (blockSole)  blockSole.classList.toggle('hidden',  val !== 'Sole Trader');
+    if (blockLtd)   blockLtd.classList.toggle('hidden',   val !== 'Limited Company');
+    if (blockOther) blockOther.classList.toggle('hidden', val !== 'Other');
 
-    document.getElementById('st-trading-name').required    = (val === 'Sole Trader');
-    document.getElementById('biz-other-specify').required  = (val === 'Other');
-    document.getElementById('ltd-company-name').required   = (val === 'Limited Company');
-    document.getElementById('ltd-reg-number').required     = (val === 'Limited Company');
-    document.getElementById('ltd-trading-name').required   = (val === 'Limited Company');
-    document.getElementById('ltd-company-address').required = (val === 'Limited Company');
+    const f = id => document.getElementById(id);
+    if (f('st-trading-name'))    f('st-trading-name').required    = (val === 'Sole Trader');
+    if (f('biz-other-specify'))  f('biz-other-specify').required  = (val === 'Other');
+    if (f('ltd-company-name'))   f('ltd-company-name').required   = (val === 'Limited Company');
+    if (f('ltd-reg-number'))     f('ltd-reg-number').required     = (val === 'Limited Company');
+    if (f('ltd-trading-name'))   f('ltd-trading-name').required   = (val === 'Limited Company');
+    if (f('ltd-company-address')) f('ltd-company-address').required = (val === 'Limited Company');
   }));
 
   document.querySelectorAll('input[name="stall_setup[]"]').forEach(cb => {
@@ -784,13 +785,14 @@
 
   document.querySelectorAll('input[name="cooking_equipment[]"]').forEach(cb => {
     cb.addEventListener('change', () => {
-      const elecChecked  = document.getElementById('cook-elec').checked;
-      const otherChecked = document.getElementById('cook-other').checked;
-      const gasChecked   = document.getElementById('cook-gas').checked;
-      document.getElementById('block-elec-warning').classList.toggle('hidden', !elecChecked);
-      document.getElementById('block-cook-other').classList.toggle('hidden',   !otherChecked);
-      document.getElementById('pat-row').classList.toggle('hidden',            !elecChecked);
-      document.getElementById('gas-req-star').classList.toggle('hidden',       !gasChecked);
+      const elecChecked  = document.getElementById('cook-elec') ? document.getElementById('cook-elec').checked : false;
+      const otherChecked = document.getElementById('cook-other') ? document.getElementById('cook-other').checked : false;
+      const gasChecked   = document.getElementById('cook-gas') ? document.getElementById('cook-gas').checked : false;
+      const g = id => document.getElementById(id);
+      if (g('block-elec-warning')) g('block-elec-warning').classList.toggle('hidden', !elecChecked);
+      if (g('block-cook-other'))   g('block-cook-other').classList.toggle('hidden',   !otherChecked);
+      if (g('pat-row'))            g('pat-row').classList.toggle('hidden',            !elecChecked);
+      if (g('gas-req-star'))       g('gas-req-star').classList.toggle('hidden',       !gasChecked);
     });
   });
 
