@@ -9,8 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
-  <meta name="uploadcare-public-key" content="5429fdec5e3fb463c84f" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -421,6 +419,8 @@
   </div>
 
   <form id="apply-form" action="https://formspree.io/f/xgod1blk" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="New Trader Application — Streetfoodish" />
+    <input type="hidden" name="_replyto" id="replyto-field" value="" />
 
     <!-- ══ 1: PERSONAL & BUSINESS DETAILS ══ -->
     <div class="form-section">
@@ -524,20 +524,20 @@
         <div class="field">
           <label>Stall Setup<span class="req-star">*</span></label>
           <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="stall_setup" value="Gazebo 3x3m" id="setup-3x3" required />
+            <label class="check-label">
+              <input type="checkbox" name="stall_setup[]" value="Gazebo 3x3m" id="setup-3x3" />
               Gazebo 3×3m (max size)
             </label>
-            <label class="radio-label">
-              <input type="radio" name="stall_setup" value="Gazebo other size" id="setup-other" />
+            <label class="check-label">
+              <input type="checkbox" name="stall_setup[]" value="Gazebo other size" id="setup-other" />
               Gazebo other size (specify)
             </label>
-            <label class="radio-label">
-              <input type="radio" name="stall_setup" value="Food Truck (future)" id="setup-truck" />
+            <label class="check-label">
+              <input type="checkbox" name="stall_setup[]" value="Food Truck (future)" id="setup-truck" />
               Food Truck <em style="color:var(--muted);font-size:12px">(future)</em>
             </label>
-            <label class="radio-label">
-              <input type="radio" name="stall_setup" value="Trailer (future)" id="setup-trailer" />
+            <label class="check-label">
+              <input type="checkbox" name="stall_setup[]" value="Trailer (future)" id="setup-trailer" />
               Trailer <em style="color:var(--muted);font-size:12px">(future)</em>
             </label>
           </div>
@@ -559,16 +559,16 @@
         <div class="field">
           <label>Cooking Equipment<span class="req-star">*</span></label>
           <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="cooking_equipment" value="LPG / Gas" id="cook-gas" required />
+            <label class="check-label">
+              <input type="checkbox" name="cooking_equipment[]" value="LPG / Gas" id="cook-gas" />
               LPG / Gas
             </label>
-            <label class="radio-label">
-              <input type="radio" name="cooking_equipment" value="Electricity" id="cook-elec" />
+            <label class="check-label">
+              <input type="checkbox" name="cooking_equipment[]" value="Electricity" id="cook-elec" />
               Electricity
             </label>
-            <label class="radio-label">
-              <input type="radio" name="cooking_equipment" value="Other" id="cook-other" />
+            <label class="check-label">
+              <input type="checkbox" name="cooking_equipment[]" value="Other" id="cook-other" />
               Other (specify)
             </label>
           </div>
@@ -661,6 +661,10 @@
       <div class="section-body">
 
         <div class="callout info" style="margin-bottom:20px;">
+          The following documents are required to complete your registration. Once you submit this form, you will receive an email requesting them — <strong>simply reply to that email with the documents attached</strong>. Please check your spam folder if you don't see it within a few minutes.
+        </div>
+
+        <div class="callout warning" style="margin-bottom:20px;">
           <strong>PLI requirements:</strong> Must be valid for market trading via gazebo — unit/restaurant policies NOT accepted. Ltd applicants: policy must be in registered company name with Ltd/Limited suffix. Sole Traders: in your personal name. Trading names or director names will be rejected.
         </div>
 
@@ -668,70 +672,58 @@
           <thead>
             <tr>
               <th>Document</th>
-              <th>When required</th>
-              <th>Upload</th>
+              <th>When</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Public Liability Insurance — market traders via gazebo <span style="color:var(--accent)">*</span></td>
+              <td>Public Liability Insurance — market traders via gazebo</td>
               <td><span class="when-badge when-always">Always</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_pli" data-crop="disabled" /></td>
             </tr>
             <tr>
-              <td>Personal Food Hygiene Certificate (Level 2+) <span style="color:var(--accent)">*</span></td>
+              <td>Personal Food Hygiene Certificate (Level 2+)</td>
               <td><span class="when-badge when-always">Always</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_food_hygiene" data-crop="disabled" /></td>
             </tr>
             <tr>
-              <td>Proof of Registration with the Council <span style="color:var(--accent)">*</span></td>
+              <td>Proof of Registration with the Council</td>
               <td><span class="when-badge when-always">Always</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_council_reg" data-crop="disabled" /></td>
             </tr>
             <tr>
-              <td>General Risk Assessment <span style="color:var(--accent)">*</span></td>
+              <td>General Risk Assessment</td>
               <td><span class="when-badge when-always">Always</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_risk_assessment" data-crop="disabled" /></td>
             </tr>
             <tr>
               <td>HACCP / Food Safety Procedures</td>
-              <td><span class="when-badge when-if">Optional</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_haccp" data-crop="disabled" /></td>
+              <td><span class="when-badge when-if">If available</span></td>
             </tr>
             <tr>
-              <td>Allergens List (UK Food Law Dec 2014) <span style="color:var(--accent)">*</span></td>
+              <td>Allergens List (UK Food Law Dec 2014)</td>
               <td><span class="when-badge when-always">Always</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_allergens_list" data-crop="disabled" /></td>
             </tr>
             <tr>
-              <td>Gas Safety Certificate <span id="gas-req-star" class="hidden" style="color:var(--accent)">*</span></td>
-              <td><span class="when-badge when-always">Always (if gas)</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_gas_cert" data-crop="disabled" /></td>
+              <td>Gas Safety Certificate</td>
+              <td><span class="when-badge when-always">If using LPG/Gas</span></td>
             </tr>
             <tr>
-              <td>Stall / Food Photo #1 <span style="color:var(--accent)">*</span></td>
+              <td>Stall / Food Photo #1</td>
               <td><span class="when-badge when-always">Always</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_photo_1" data-crop="disabled" /></td>
             </tr>
             <tr>
-              <td>Stall / Food Photo #2 <span style="color:var(--accent)">*</span></td>
+              <td>Stall / Food Photo #2</td>
               <td><span class="when-badge when-always">Always</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_photo_2" data-crop="disabled" /></td>
             </tr>
             <tr>
               <td>Council Food Hygiene Star Rating (3★ min)</td>
               <td><span class="when-badge when-if">If available</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_hygiene_rating" data-crop="disabled" /></td>
             </tr>
-            <tr id="pat-row" class="hidden">
-              <td>PAT Test Certificate <span style="color:var(--accent)">*</span></td>
+            <tr>
+              <td>PAT Test Certificate</td>
               <td><span class="when-badge when-elec">If electricity</span></td>
-              <td><input type="hidden" role="uploadcare-uploader" name="doc_pat_test" data-crop="disabled" /></td>
             </tr>
           </tbody>
         </table>
 
-        <p style="font-size:12px;color:var(--muted);margin-top:12px;font-style:italic">Name each file clearly when submitting (e.g. PLI.pdf, GAS_CERT.pdf, HACCP.pdf)</p>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;font-style:italic">Name each file clearly when sending (e.g. PLI.pdf, GAS_CERT.pdf, PHOTO1.jpg)</p>
 
       </div>
     </div>
@@ -746,7 +738,7 @@
         <div class="declaration-wrap">
           <label class="check-label">
             <input type="checkbox" id="decl-all" name="declaration" value="confirmed" required />
-            I confirm all information in this application is accurate and all documents are valid, current, and consistent under the same registered name. I confirm my PLI is valid for market trading via gazebo and covers the sale of food at street markets. I authorise Foodish Limited to process my personal data for application assessment and trader management (<a href="/privacy-policy" style="color:var(--accent)">streetfoodish.com/privacy-policy</a>). I grant Foodish Limited permission to use photos/videos of my stall and food for promotional purposes (social media, website, press).
+            I confirm all information in this application is accurate and all documents are valid, current, and consistent under the same registered name. I confirm my PLI is valid for market trading via gazebo and covers the sale of food at street markets. I authorise Foodish Limited to process my personal data for application assessment and trader management (streetfoodish.com/privacy-policy). I grant Foodish Limited permission to use photos/videos of my stall and food for promotional purposes (social media, website, press).
           </label>
         </div>
       </div>
@@ -783,19 +775,22 @@
     document.getElementById('ltd-company-address').required = (val === 'Limited Company');
   }));
 
-  document.querySelectorAll('input[name="stall_setup"]').forEach(r => {
-    r.addEventListener('change', () => {
-      document.getElementById('block-gazebo-size').classList.toggle('hidden', r.value !== 'Gazebo other size');
+  document.querySelectorAll('input[name="stall_setup[]"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const otherChecked = document.getElementById('setup-other').checked;
+      document.getElementById('block-gazebo-size').classList.toggle('hidden', !otherChecked);
     });
   });
 
-  document.querySelectorAll('input[name="cooking_equipment"]').forEach(r => {
-    r.addEventListener('change', () => {
-      const val = r.value;
-      document.getElementById('block-elec-warning').classList.toggle('hidden', val !== 'Electricity');
-      document.getElementById('block-cook-other').classList.toggle('hidden',   val !== 'Other');
-      document.getElementById('pat-row').classList.toggle('hidden',            val !== 'Electricity');
-      document.getElementById('gas-req-star').classList.toggle('hidden',       val !== 'LPG / Gas');
+  document.querySelectorAll('input[name="cooking_equipment[]"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const elecChecked  = document.getElementById('cook-elec').checked;
+      const otherChecked = document.getElementById('cook-other').checked;
+      const gasChecked   = document.getElementById('cook-gas').checked;
+      document.getElementById('block-elec-warning').classList.toggle('hidden', !elecChecked);
+      document.getElementById('block-cook-other').classList.toggle('hidden',   !otherChecked);
+      document.getElementById('pat-row').classList.toggle('hidden',            !elecChecked);
+      document.getElementById('gas-req-star').classList.toggle('hidden',       !gasChecked);
     });
   });
 
@@ -838,6 +833,15 @@
       errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   });
+
+  // Sync _replyto with email input for Formspree auto-reply
+  const emailInput = document.getElementById('email');
+  const replytoField = document.getElementById('replyto-field');
+  if (emailInput && replytoField) {
+    emailInput.addEventListener('input', () => {
+      replytoField.value = emailInput.value;
+    });
+  }
 </script>
 
 </body>
